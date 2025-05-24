@@ -10,6 +10,7 @@ import java.time.Instant;
 public class Store {
     @Id
     @Column(name = "store_id", columnDefinition = "tinyint UNSIGNED not null")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Short id;
 
     @OneToOne(fetch = FetchType.LAZY, optional = false)

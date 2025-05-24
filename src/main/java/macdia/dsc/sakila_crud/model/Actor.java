@@ -1,10 +1,8 @@
 package macdia.dsc.sakila_crud.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.Instant;
 
@@ -13,6 +11,7 @@ import java.time.Instant;
 public class Actor {
     @Id
     @Column(name = "actor_id", columnDefinition = "smallint UNSIGNED not null")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "first_name", nullable = false, length = 45)
@@ -21,6 +20,7 @@ public class Actor {
     @Column(name = "last_name", nullable = false, length = 45)
     private String lastName;
 
+    @UpdateTimestamp
     @ColumnDefault("CURRENT_TIMESTAMP")
     @Column(name = "last_update", nullable = false)
     private Instant lastUpdate;

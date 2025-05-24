@@ -1,9 +1,6 @@
 package macdia.dsc.sakila_crud.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import org.hibernate.annotations.ColumnDefault;
 
 import java.time.Instant;
@@ -13,6 +10,7 @@ import java.time.Instant;
 public class Language {
     @Id
     @Column(name = "language_id", columnDefinition = "tinyint UNSIGNED not null")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Short id;
 
     @Column(name = "name", nullable = false, length = 20)

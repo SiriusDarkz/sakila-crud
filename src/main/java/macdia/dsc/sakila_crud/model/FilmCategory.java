@@ -9,6 +9,7 @@ import java.time.Instant;
 @Table(name = "film_category")
 public class FilmCategory {
     @EmbeddedId
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private FilmCategoryId id;
 
     @MapsId("filmId")

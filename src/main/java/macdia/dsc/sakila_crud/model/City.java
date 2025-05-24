@@ -10,6 +10,7 @@ import java.time.Instant;
 public class City {
     @Id
     @Column(name = "city_id", columnDefinition = "smallint UNSIGNED not null")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "city", nullable = false, length = 50)

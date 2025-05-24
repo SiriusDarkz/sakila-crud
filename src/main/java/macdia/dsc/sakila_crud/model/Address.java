@@ -1,10 +1,9 @@
 package macdia.dsc.sakila_crud.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.hibernate.annotations.ColumnDefault;
 import org.locationtech.jts.geom.Point;
-
-
 
 import java.time.Instant;
 
@@ -13,6 +12,7 @@ import java.time.Instant;
 public class Address {
     @Id
     @Column(name = "address_id", columnDefinition = "smallint UNSIGNED not null")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "address", nullable = false, length = 50)
@@ -24,7 +24,7 @@ public class Address {
     @Column(name = "district", nullable = false, length = 20)
     private String district;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "city_id", nullable = false)
     private City city;
 
@@ -38,6 +38,7 @@ public class Address {
     @Column(name = "last_update", nullable = false)
     private Instant lastUpdate;
 
+    @JsonIgnore
     @Column(name = "location", columnDefinition = "geometry not null")
     private Point location;
 

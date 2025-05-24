@@ -10,6 +10,7 @@ import java.time.Instant;
 public class Customer {
     @Id
     @Column(name = "customer_id", columnDefinition = "smallint UNSIGNED not null")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
